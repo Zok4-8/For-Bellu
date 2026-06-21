@@ -352,3 +352,31 @@ button{
         overflow-y:auto;
     }
 }
+
+.card::-webkit-scrollbar{
+    width:12px;
+}
+
+.card::-webkit-scrollbar-track{
+    background:rgba(255,255,255,.15);
+    border-radius:20px;
+}
+
+.card::-webkit-scrollbar-thumb{
+    background:linear-gradient(
+        180deg,
+        #ff006e,
+        #ff4d6d,
+        #ff85a1
+    );
+    border-radius:20px;
+    border:2px solid rgba(255,255,255,.2);
+}
+
+.card::-webkit-scrollbar-thumb:hover{
+    background:linear-gradient(
+        180deg,
+        #ff4d6d,
+        #ff006e
+    );
+}
