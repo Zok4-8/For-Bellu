@@ -1,8 +1,9 @@
-function checkPassword(){
+const CORRECT_PASSWORD = "I love you forever";
 
-    const pass = document.getElementById("password").value;
+function checkPassword() {
+    const password = document.getElementById("password").value;
 
-    if(pass === "I Love you forever"){
+    if (password === CORRECT_PASSWORD) {
 
         document.getElementById("login").style.display = "none";
 
@@ -11,96 +12,87 @@ function checkPassword(){
         const music = document.getElementById("bgMusic");
 
         music.play().catch(() => {});
-    }
-    else{
-        alert("🥺 كلمة السر غلط يا Bellu");
+
+
+    } else {
+
+        alert("🥺 كلمة السر غلط يا Bellu ❤️");
+
     }
 }
 
-/* قلوب متحركة */
+// Love Button
 
-function createHeart(){
+document.addEventListener("DOMContentLoaded", () => {
 
-    const heart = document.createElement("div");
+    const loveBtn = document.getElementById("loveBtn");
 
-    heart.classList.add("heart");
+    if (loveBtn) {
 
-    const emojis = ["❤️","💕","💖","💗","💞"];
+        loveBtn.addEventListener("click", () => {
 
-    heart.innerHTML =
-        emojis[Math.floor(Math.random()*emojis.length)];
+            loveBtn.innerHTML = "❤️‍🔥😍 بموت فيكي 😘💖";
 
-    heart.style.left =
-        Math.random()*100 + "vw";
+            loveBtn.style.transform = "scale(1.08)";
 
-    heart.style.fontSize =
-        (20 + Math.random()*30) + "px";
-
-    heart.style.animationDuration =
-        (4 + Math.random()*6) + "s";
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    },10000);
-}
-
-setInterval(createHeart,250);
-
-/* زر سامحيني */
-
-document.addEventListener("click", function(e){
-
-    if(e.target.classList.contains("forgive-btn")){
-
-        e.target.innerHTML =
-        " روح قلبيBellu ❤️";
+        });
 
     }
 
 });
 
-const emojis = [
-"❤️","💖","💕","💞",
-"💘","💝",
-"✨","🥺","😍","❤️‍🔥",
-"💓","💗"
-];
+// Floating Emojis
 
-function createFloatingEmoji(){
+function createFloatingEmojis() {
 
-    const emoji = document.createElement("span");
+    const container =
+    document.getElementById("floatingContainer");
 
-    emoji.innerHTML =
-    emojis[Math.floor(Math.random() * emojis.length)];
+    const emojis = [
+        "❤️","💖","💕","💞",
+        "🥰","😍","✨","💘"
+    ];
 
-    emoji.style.position = "fixed";
-    emoji.style.left = Math.random() * 100 + "vw";
-    emoji.style.bottom = "-50px";
-    emoji.style.fontSize = (25 + Math.random() * 30) + "px";
-    emoji.style.zIndex = "1";
-    emoji.style.pointerEvents = "none";
+    setInterval(() => {
 
-    document.body.appendChild(emoji);
+        const emoji =
+        document.createElement("div");
 
-    let position = -50;
+        emoji.innerHTML =
+        emojis[Math.floor(Math.random() * emojis.length)];
 
-    const animation = setInterval(() => {
+        emoji.style.position = "fixed";
 
-        position += 3;
+        emoji.style.left =
+        Math.random() * 100 + "vw";
 
-        emoji.style.bottom = position + "px";
+        emoji.style.bottom = "-50px";
 
-        emoji.style.transform =
-        `rotate(${position}deg)`;
+        emoji.style.fontSize =
+        (15 + Math.random() * 30) + "px";
 
-        if(position > window.innerHeight + 100){
-            clearInterval(animation);
+        emoji.style.opacity =
+        (0.4 + Math.random() * 0.6);
+
+        emoji.style.pointerEvents = "none";
+
+        emoji.style.zIndex = "2";
+
+        const duration =
+        5 + Math.random() * 5;
+
+        emoji.style.animation =
+        `floatUp ${duration}s linear forwards`;
+
+        container.appendChild(emoji);
+
+        setTimeout(() => {
+
             emoji.remove();
-        }
 
-    },20);
+        }, duration * 1000);
+
+    }, 100);
 }
 
-setInterval(createFloatingEmoji,150);
+createFloatingEmojis();
