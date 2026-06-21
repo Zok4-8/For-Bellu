@@ -200,6 +200,7 @@ button{
     animation: glow 3s infinite alternate;
     position: relative;
     z-index: 10;
+    overflow: visible;
 }
 
 @keyframes glow{
@@ -253,11 +254,12 @@ button{
 .card::before{
     content:"❤️❤️ 💖 ❤️❤️";
     position:absolute;
-    top:-30px;
+    top:-40px;
     left:50%;
     transform:translateX(-50%);
     font-size:25px;
     animation: sparkle 2s infinite;
+    z-index:9999;
 }
 
 @keyframes sparkle{
@@ -269,7 +271,7 @@ button{
         opacity:1;
     }
 }
-
+/*
 @media (max-width: 768px){
 
     .card{
@@ -318,5 +320,35 @@ button{
 
     .footer-love{
         font-size: 0.75rem;
+    }
+}*/
+
+/* Mobile */
+@media (max-width: 768px){
+
+    body{
+        overflow-y:auto;
+        overflow-x:hidden;
+    }
+
+    #main{
+        min-height:100vh;
+        height:auto;
+        padding:20px;
+        align-items:flex-start;
+    }
+
+    .card{
+        overflow:visible;
+        max-height:none;
+    }
+}
+
+/* Laptop/Desktop */
+@media (min-width: 769px){
+
+    .card{
+        max-height:85vh;
+        overflow-y:auto;
     }
 }
