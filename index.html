@@ -1,45 +1,74 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Bellu ❤️</title>
-    <link rel="icon" href=",.jpeg">
+
     <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" href=",.jpeg">
 </head>
+
 <body>
-<div class="floating-emojis"></div>
-    <!-- شاشة الباسورد -->
-    <div id="login">
-        <div class="login-box">
+
+    <!-- Floating Emojis -->
+    <div id="floatingContainer"></div>
+
+    <!-- Login Screen -->
+    <section id="login">
+
+        <div class="login-card">
+
             <h1>💖 Welcome Bellu 💖</h1>
-            <p>Password of Love ❤️</p>
 
-            <input type="password" id="password" placeholder="Password">
+            <p class="subtitle">
+                Password of Love ❤️
+            </p>
 
-            <button onclick="checkPassword()">
+            <input
+                type="password"
+                id="password"
+                placeholder="Password">
+
+            <button onclick="checkPassword()" class="enter-btn">
                 ❤️ افتحي قلبي ❤️
             </button>
-        </div>
-    </div>
 
-    <!-- الصفحة الرئيسية -->
-    <div id="main">
+        </div>
+
+    </section>
+
+    <!-- Main Page -->
+    <section id="main">
 
         <audio id="bgMusic" loop>
-            <!-- حط لينك الأغنية هنا -->
             <source src="Kelma.mp3" type="audio/mpeg">
         </audio>
 
-        <div class="card">
+        <div class="main-wrapper">
 
-            <h1>💖 Bellu 💖</h1>
-
-            <div class="hearts-row">
-                ❤️ 💕 🥺 ✨ 💖 ❤️
+            <div class="top-hearts">
+                ❤️ 💖 💕 ✨ ❤️ 💖 💕
             </div>
 
-            <p class="message">
+            <div class="card">
+
+                <h1>
+                    💖 Bellu 💖
+                </h1>
+
+                <div class="hearts-row">
+                    ❤️ 💕 ✨ 🥺 💖 ❤️
+                </div>
+
+                <div class="message">
+
+                    <!-- اكتب رسالتك هنا -->
+
+                    <p>
 يا Bellu ❤️
 
 عارف إنك زعلانة مني 😔💔، وعارف إن اعتذاري ده مش هيمسح اللي أنا عملته ✨، بس بجد زعلك فارق معايا جدًا 😞❤️.
@@ -72,19 +101,26 @@
 
 إنتِ بالنسبة ليا شخص مهم  👑💕، وليكي مكانة عمر أي حد ما يقدر ياخدها 🌹💖.
 
-بحبك ❤️💞😍
+                    </p>
 
-وبموت فيكي ❤️‍🔥💕✨
-            </p>
-            <div class="footer-love">
-                ♾️ ❤️❤️❤️ Endless Love for Bellu  ♾️
+                </div>
+
+                <button class="love-btn" id="loveBtn">
+                    ❤️🥰 بحبك 🥰❤️
+                </button>
+
+                <div class="footer-love">
+                    ♾️ ❤️❤️❤️ Endless Love For Bellu ❤️❤️❤️ ♾️
+                </div>
+
             </div>
 
         </div>
 
-    </div>
+    </section>
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
