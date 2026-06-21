@@ -1,350 +1,249 @@
+
+/* Reset */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Arial',sans-serif;
+    font-family:Arial, sans-serif;
 }
 
+/* Body */
+
 body{
-    height:100vh;
-    overflow:hidden;
-    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    min-height:100vh;
+    background:linear-gradient(
+        135deg,
+        #ff006e,
+        #ff4d6d,
+        #ff85a1,
+        #ffc2d1
+    );
+
+    overflow-x:hidden;
+}
+
+/* Floating Emojis */
+
+#floatingContainer{
+    position:fixed;
+    inset: 0;
+    pointer-events:none;
+    overflow: hidden;
+    z-index:2;
 }
 
 /* Login */
 
 #login{
-    position:absolute;
-    width:100%;
-    height:100%;
+    min-height:100vh;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
+    padding:20px;
 }
 
-.login-box{
-    background:white;
-    padding:40px;
-    border-radius:25px;
+.login-card{
+    width:100%;
+    max-width:450px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:30px;
+
+    padding:35px;
+
     text-align:center;
-    box-shadow:0 0 30px rgba(0,0,0,.2);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,.15);
 }
 
-.login-box h1{
-    color:#ff4d6d;
+.login-card h1{
+    color:white;
     margin-bottom:15px;
 }
 
-.login-box p{
-    margin-bottom:15px;
+.subtitle{
+    color:white;
+    margin-bottom:20px;
 }
 
-input{
-    width:280px;
-    padding:12px;
-    border:2px solid #ff4d6d;
-    border-radius:12px;
-    margin-bottom:15px;
-}
+#password{
+    width:100%;
 
-button{
+    padding:15px;
+
     border:none;
+
+    border-radius:15px;
+
+    outline:none;
+
+    margin-bottom:15px;
+}
+
+.enter-btn{
+    width:100%;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:15px;
+
     cursor:pointer;
+
+    font-size:1rem;
+    font-weight:bold;
+
+    background:white;
+    color:#ff006e;
+
+    transition:.3s;
+}
+
+.enter-btn:hover{
+    transform:translateY(-2px);
 }
 
 /* Main */
 
 #main{
     display:none;
-    width:100%;
-    height:100%;
 
-    justify-content:center;
-    align-items:center;
-
-    background:
-    linear-gradient(
-    135deg,
-    #ff006e,
-    #ff4d6d,
-    #ff85a1,
-    #ffc2d1
-    );
+    min-height:100vh;
 
     padding:20px;
 }
 
-.card{
-    width:90%;
-    max-width:900px;
+.main-wrapper{
+    width:100%;
 
-    max-height: 90%;
-    overflow-y: auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* Hearts Above Card */
+
+.top-hearts{
+    font-size:28px;
+
+    margin-bottom:12px;
+
+    animation:sparkle 2s infinite;
+
+    z-index:10;
+}
+
+/* Card */
+
+.card{
+
+    width:min(95%,900px);
 
     background:rgba(255,255,255,.15);
 
-    backdrop-filter:blur(15px);
+    backdrop-filter:blur(18px);
 
-    border-radius:30px;
+    border-radius:35px;
 
-    padding:40px;
+    padding:30px;
 
     color:white;
 
     text-align:center;
 
-    box-shadow:0 0 40px rgba(255,255,255,.25);
+    box-shadow:
+    0 0 35px rgba(255,255,255,.25);
+
+    animation:glow 3s infinite alternate;
+
+    position:relative;
+
+    z-index:10;
 }
 
 .card h1{
-    font-size:3rem;
+    font-size:clamp(2rem,4vw,3.2rem);
+
     margin-bottom:20px;
-}
 
-.hearts-row{
-    font-size:2rem;
-    margin-bottom:25px;
-}
-
-.message{
-    line-height:2;
-    font-size:1.2rem;
-}
-
-.special-box{
-    margin-top:25px;
-    padding:15px;
-    border-radius:20px;
-    background:rgba(255,255,255,.15);
-    font-size:1.3rem;
-}
-
-.forgive-btn{
-    margin-top:25px;
-    background:white;
-    color:#ff006e;
-    padding:15px 30px;
-    border-radius:50px;
-    font-size:1.1rem;
-    font-weight:bold;
-    transition:.3s;
-}
-
-.forgive-btn:hover{
-    transform:scale(1.1);
-}
-
-.song-box{
-    margin-top:25px;
-    padding:20px;
-    border-radius:20px;
-    background:rgba(255,255,255,.12);
-}
-
-.footer-love{
-    margin-top:25px;
-    font-size:1.3rem;
-    font-weight:bold;
-}
-
-.heart{
-    position:absolute;
-    color:white;
-    animation:float linear infinite;
-}
-
-@keyframes float{
-    0%{
-        transform:translateY(100vh) rotate(0);
-        opacity:0;
-    }
-
-    20%{
-        opacity:1;
-    }
-
-    100%{
-        transform:translateY(-120px) rotate(360deg);
-        opacity:0;
-    }
-}
-
-/* إيموجيز متحركة في الخلفية */
-
-.floating-emoji{
-    position:fixed;
-    pointer-events:none;
-    z-index:999;
-    animation: floatEmoji linear forwards;
-}
-
-@keyframes floatEmoji{
-    0%{
-        transform:translateY(110vh) rotate(0deg) scale(.5);
-        opacity:0;
-    }
-
-    15%{
-        opacity:1;
-    }
-
-    100%{
-        transform:translateY(-120px) rotate(360deg) scale(1.2);
-        opacity:0;
-    }
-}
-
-/* توهج للكارت */
-
-.card{
-    animation: glow 3s infinite alternate;
-    position: relative;
-    z-index: 10;
-    overflow: visible;
-}
-
-@keyframes glow{
-    from{
-        box-shadow:0 0 25px rgba(255,255,255,.25);
-    }
-
-    to{
-        box-shadow:
-        0 0 40px rgba(255,255,255,.5),
-        0 0 80px rgba(255,105,180,.4);
-    }
-}
-
-/* نبض للعنوان */
-
-.card h1{
     animation:pulse 2s infinite;
 }
 
-@keyframes pulse{
-    0%{
-        transform:scale(1);
-    }
+.hearts-row{
+    font-size:clamp(1.2rem,3vw,2rem);
 
-    50%{
-        transform:scale(1.08);
-    }
-
-    100%{
-        transform:scale(1);
-    }
+    margin-bottom:20px;
 }
 
-/* زر سامحيني */
+/* Message */
 
-.forgive-btn{
-    animation:bounce 2s infinite;
+.message{
+
+    margin-top:10px;
+
+    line-height:2;
+
+    font-size:1.1rem;
+
+    font-weight:bold;
+
+    text-align:center;
 }
 
-@keyframes bounce{
-    0%,100%{
-        transform:translateY(0);
-    }
+/* Love Button */
 
-    50%{
-        transform:translateY(-8px);
-    }
+.love-btn{
+
+    margin-top:30px;
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:16px 35px;
+
+    border-radius:999px;
+
+    font-size:1.1rem;
+
+    font-weight:bold;
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        #ff006e,
+        #ff4d6d,
+        #ff85a1
+    );
+
+    transition:.3s;
 }
 
-.card::before{
-    content:"❤️❤️ 💖 ❤️❤️";
-    position:absolute;
-    top:-40px;
-    left:50%;
-    transform:translateX(-50%);
-    font-size:25px;
-    animation: sparkle 2s infinite;
-    z-index:9999;
+.love-btn:hover{
+    transform:scale(1.05);
 }
 
-@keyframes sparkle{
-    0%,100%{
-        opacity:0.4;
-    }
+/* Footer */
 
-    50%{
-        opacity:1;
-    }
-}
-/*
-@media (max-width: 768px){
+.footer-love{
+    margin-top:25px;
 
-    .card{
-        width: 95%;
-        padding: 15px;
-    }
+    font-size:1.1rem;
 
-    .card h1{
-        font-size: 1.8rem;
-    }
-
-    .hearts-row{
-        font-size: 1.2rem;
-    }
-
-    .message{
-        font-size: 0.9rem;
-        line-height: 1.6;
-        font-weight: bold;
-    }
-
-    .footer-love{
-        font-size: 0.9rem;
-    }
+    font-weight:bold;
 }
 
-@media (max-width: 480px){
+/* Laptop Scroll */
 
-    .card{
-        padding: 12px;
-    }
-
-    .card h1{
-        font-size: 1.4rem;
-    }
-
-    .message{
-        font-size: 0.75rem;
-        line-height: 1.4;
-        font-weight: bold;
-    }
-
-    .hearts-row{
-        font-size: 1rem;
-    }
-
-    .footer-love{
-        font-size: 0.75rem;
-    }
-}*/
-
-/* Mobile */
-@media (max-width: 768px){
-
-    body{
-        overflow-y:auto;
-        overflow-x:hidden;
-    }
-
-    #main{
-        min-height:100vh;
-        height:auto;
-        padding:20px;
-        align-items:flex-start;
-    }
-
-    .card{
-        overflow:visible;
-        max-height:none;
-    }
-}
-
-/* Laptop/Desktop */
 @media (min-width: 769px){
 
     .card{
@@ -353,8 +252,31 @@ button{
     }
 }
 
+/* Mobile */
+
+@media (max-width:768px){
+
+    .card{
+        padding:20px;
+    }
+
+    .message{
+        font-size:1rem;
+    }
+
+    .footer-love{
+        font-size:.95rem;
+    }
+
+    .top-hearts{
+        font-size:22px;
+    }
+}
+
+/* Scrollbar */
+
 .card::-webkit-scrollbar{
-    width:12px;
+    width:10px;
 }
 
 .card::-webkit-scrollbar-track{
@@ -363,20 +285,71 @@ button{
 }
 
 .card::-webkit-scrollbar-thumb{
-    background:linear-gradient(
-        180deg,
-        #ff006e,
-        #ff4d6d,
-        #ff85a1
-    );
+    background:#ff4d6d;
     border-radius:20px;
-    border:2px solid rgba(255,255,255,.2);
 }
 
-.card::-webkit-scrollbar-thumb:hover{
-    background:linear-gradient(
-        180deg,
-        #ff4d6d,
-        #ff006e
-    );
+.card{
+    scrollbar-width:thin;
+    scrollbar-color:#ff4d6d rgba(255,255,255,.15);
+}
+
+/* Animations */
+
+@keyframes glow{
+
+    from{
+        box-shadow:
+        0 0 25px rgba(255,255,255,.25);
+    }
+
+    to{
+        box-shadow:
+        0 0 50px rgba(255,255,255,.5),
+        0 0 80px rgba(255,105,180,.35);
+    }
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.05);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+@keyframes sparkle{
+
+    0%,100%{
+        opacity:.5;
+    }
+
+    50%{
+        opacity:1;
+    }
+}
+
+@keyframes floatUp {
+
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10%{
+        opacity: 1;
+    }
+
+    100%{
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+    }
+
 }
